@@ -7,7 +7,6 @@ var fs_1 = __importDefault(require("fs"));
 var CsvFileReader = /** @class */ (function () {
     function CsvFileReader(filename) {
         this.filename = filename;
-        // data is a 2D array
         this.data = [];
     }
     CsvFileReader.prototype.read = function () {
@@ -18,7 +17,8 @@ var CsvFileReader = /** @class */ (function () {
             .split('\n')
             .map(function (row) {
             return row.split(',');
-        });
+        })
+            .map(this.mapRow);
     };
     return CsvFileReader;
 }());
